@@ -12,8 +12,11 @@ clone the repository and run "StudentsApplication"
 - Maven
 
 ```
-Give examples
-// TODO commands on routes
+CLI Usage:
+
+curl --request POST -H 'Content-Type: application/json' -d '{ "alumniCode":42003, "name":"Aluno", "surName":"L One" }' http://localhost:8080/students
+curl --request DELETE http://localhost:8080/students/42003
+
 ```
 
 ## Running the tests
@@ -25,10 +28,6 @@ Explain how to run the automated tests for this system
 * [Spring](https://spring.io/) - Java Framework
 * [Maven](https://maven.apache.org/) - Dependency Management
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
 ## Authors
 
 * **Eduardo Bulsoni** - [egbulsoni](https://github.com/egbulsoni)
@@ -36,10 +35,4 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## License
 
 This project is licensed under the Unlicense - see the [UNLICENSE.md](UNLICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
 
