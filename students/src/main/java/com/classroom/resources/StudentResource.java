@@ -59,11 +59,6 @@ public class StudentResource {
 	@ExceptionHandler(InvalidFieldsException.class)
 	public ResponseEntity<Object> createStudent(@Valid @RequestBody Student student) {
 		Student savedStudent = studentRepository.save(student);
-		/* TODO */
-//		if(savedStudent.)
-//        return ResponseEntity
-//                .status(HttpStatus.FORBIDDEN)
-//                .body("Error Message");
 	
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(savedStudent.getAlumniCode()).toUri();
