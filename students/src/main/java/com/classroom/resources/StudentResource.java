@@ -12,7 +12,6 @@ import com.classroom.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,12 +35,15 @@ public class StudentResource {
 	}
 	
 	@GetMapping("/students/{alumniCode}")
-	public ResponseEntity<Student> retrieveStudent(@PathVariable Long alumniCode) {
+	public  ResponseEntity<Student> retrieveStudent(@PathVariable Long alumniCode) {
 		Optional<Student> student = studentRepository.findById(alumniCode);
-		if (student.isEmpty()) {
-			return ResponseEntity.notFound().build();
-		}
-		return ResponseEntity.accepted().build();
+		
+		 if (student.isEmpty()) {
+             return ResponseEntity.notFound().build();
+		 }
+		 
+		 return ResponseEntity.accepted().body(student.get());
+
 	}
 	
 	@DeleteMapping("/students/{alumniCode}")
@@ -56,7 +58,6 @@ public class StudentResource {
 
 	
 	@PostMapping("/students")
-	@ExceptionHandler(InvalidFieldsException.class)
 	public ResponseEntity<Object> createStudent(@Valid @RequestBody Student student) {
 		Student savedStudent = studentRepository.save(student);
 	
@@ -72,9 +73,8 @@ public class StudentResource {
 		
 		if (studentOptional.isEmpty())
 			return ResponseEntity.notFound().build();
-		
-		student.setAlumniCode(alumniCode);	
-		
+
+		studentRepository.delete(studentOptional.get());
 		studentRepository.save(student);
 		return ResponseEntity.noContent().build();
 	}
