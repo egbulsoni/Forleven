@@ -1,6 +1,6 @@
-# Project Title
+# Forleven students API
 
-Forleven students API
+REST API made for a challenge at Forleven
 
 ## Getting Started
 
@@ -21,7 +21,7 @@ curl --request DELETE http://localhost:8080/students/42003
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+Just execute the tests file.
 
 ## Built With
 
